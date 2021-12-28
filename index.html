@@ -3,691 +3,400 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="robots" content="noindex">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-  <title>Jared Jacobowitz's Website</title>
-  <!-- <link rel="shortcut icon" href="img/"> Add logo here for tab image -->
-  <link rel="shortcut icon" href="img/JHJ_Logo_No_Background.png" style="max-width: 12%">
+	<title>Jared Jacobowitz's Website</title>
+	<link rel="shortcut icon" href="img/JHJ_Logo_No_Background.png" style="max-width: 12%">
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" style="max-width: 5%">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" style="max-width: 5%">
 
-  <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<!-- Custom fonts for this template -->
+	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="css/grayscale.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="css/grayscale.min.css" rel="stylesheet">
+	
+	<link rel="shortcut icon" href="#">
 
 </head>
 
 <body id="page-top">
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About Me</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#resume">Resume+</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">
+			<span>JARED</span>
+			<strong>JACOBOWITZ</strong>
+			</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				Menu
+				<i class="fas fa-bars"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#about">About Me</a>
+					</li>
+					<li class="nav-item">
+						<div class="dropdown">
+							<a class="nav-link js-scroll-trigger" href="#research">Research</a>
+							<div class="dropdown-content">
+								<script>
+									$(document).ready(function(){
+										$.getJSON('data.json', function(data) {
+											$.each(data.research, function(i, _research) {
+												var clone = $(".researchdropdowntemplate").clone();
+												clone.find(".template-dropdown").attr("href", "#" + _research.id);
+												clone.find(".template-dropdown").html(_research.shorttitle);
+												
+												clone.removeClass("researchdropdowntemplate");
 
-  <!-- Header -->
-  <header class="masthead">
-    <div class="container d-flex h-100 align-items-center">
-      <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">Jared</h1>
-        <h1 class="mx-auto my-0 text-uppercase">Jacobowitz</h1>
-        <h2 class="text-white mx-auto mb-5">Senior at The Cooper Union studying Mechanical Engineering (major) and Computer Science (minor)</h2>
-        <!-- <a href="#about" class="btn btn-primary js-scroll-trigger">About Me</a> -->
-        <img src="img/JHJ_Logo_No_Background.png" class="img-fluid" alt="" style="max-width: 30%">
+												$(".researchdropdowntemplate-spot").append(clone);
+											});
+										});
+									});			
+								</script>
+								<label class="researchdropdowntemplate-spot">
+									<label class="researchdropdowntemplate">
+										<a class="js-scroll-trigger template-dropdown" href="">NAME HERE</a>
+									</label>
+								</label>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item">
+						<div class="dropdown">
+							<a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
+							<div class="dropdown-content">
+								<script>
+									$(document).ready(function(){
+										$.getJSON('data.json', function(data) {
+											$.each(data.projects, function(i, project) {
+												var clone = $(".projectdropdowntemplate").clone();
+												clone.find(".template-dropdown").attr("href", "#" + project.id);
+												clone.find(".template-dropdown").html(project.shorttitle);
+												
+												clone.removeClass("projectdropdowntemplate");
 
-      </div>
-    </div>
-  </header>
+												$(".projectdropdowntemplate-spot").append(clone);
+											});
+										});
+									});			
+								</script>
+								<label class="projectdropdowntemplate-spot">
+									<label class="projectdropdowntemplate">
+										<a class="js-scroll-trigger template-dropdown" href="">NAME HERE</a>
+									</label>
+								</label>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#resume">Resume+</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			// Dynamically created items do not have the event binded properly
+			// Need to do this to bind them
+			// https://stackoverflow.com/questions/203198/event-binding-on-dynamically-created-elements
+			$(document.body).on('click','.js-scroll-trigger', function(e) { 
+				// function copied from grayscale.min.js with one line added
+				"use strict";
+				e = $; // https://stackoverflow.com/questions/54116212/uncaught-typeerror-e-is-not-a-function-on-a-js-function-for-a-bookmarklet
+				e('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function(){
+					if(location.pathname.replace(/^\//,"") == this.pathname.replace(/^\//,"") && location.hostname == this.hostname){
+						var a = e(this.hash);
+						if((a = a.length ? a : e("[name="+this.hash.slice(1)+"]")).length)
+							return e("html, body").animate({scrollTop:a.offset().top-70},1e3,"easeInOutExpo"),!1
+					}
+				}),
+				e(".js-scroll-trigger").click(function(){
+					e(".navbar-collapse").collapse("hide")
+				}),
+				e("body").scrollspy({
+					target:"#mainNav",offset:100
+				});
+				function a(){
+					100 < e("#mainNav").offset().top ? e("#mainNav").addClass("navbar-shrink") : e("#mainNav").removeClass("navbar-shrink")
+				}
+				a(), e(window).scroll(a)
+			});
+		</script>
+	</nav>
 
-  <!-- About Me Section -->
-  <section id="about" class="about-section text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-			<h2 class="text-white mb-4">About Me</h2>
-			<!-- <img src="img/Headshot_Cropped.jpeg" class="img-fluid" alt="Avatar" style="border-radius: 50%; max-width: 33%"> -->
+	<!-- Header -->
+	<header class="masthead">
+		<div class="container d-flex h-100 align-items-center">
+			<div class="mx-auto text-center">
+				<h1 class="mx-auto my-0 text-uppercase">Jared</h1>
+				<h1 class="mx-auto my-0 text-uppercase">Jacobowitz</h1>
+				<h2 class="text-white mx-auto mb-5">Senior at The Cooper Union studying Mechanical Engineering (major) and Computer Science (minor)</h2>
+				<!-- <a href="#about" class="btn btn-primary js-scroll-trigger">About Me</a> -->
+				<img src="img/JHJ_Logo_No_Background.png" class="img-fluid" alt="" style="max-width: 30%">
+			</div>
+		</div>
+	</header>
 
-			<p style="color:rgba(255,255,255,0.75)"><br>I am a focused, detail-oriented, and organized senior mechanical engineering (major) and computer science (minor) student at <b><a href="https://cooper.edu/">The Cooper Union for the Advancement of Science and Art</a></b> (expected: May 2022) in New York City.
-			<br><br>
-			I am interested in computational mechanical engineering research, specifically fluid mechanics with the use of numerical methods, simulations, and data science. I spent the summer of 2021 as an undergraduate R&D intern at <b><a href="https://en.wikipedia.org/wiki/Sandia_National_Laboratories">Sandia National Laboratories</a></b> in the <b><a href="https://www.sandia.gov/careers/career-possibilities/students-and-postdocs/internships-co-ops/institute-programs/nonlinear-mechanics-and-dynamics-research-institute-2/">Nonlinear Mechanics and Dynamics (NOMAD) Research Institute</a></b>. There, I was one of eighteen students in the program and one of only six undergraduate students. I worked on FEA simulations (using Sierra/SM on Sandia’s HPC servers) of a material puncture scenario and then fit the data in Python using nonlinear least-squares regression with a previously developed empirical puncture energy equation. As I did during my internship and also do in many of my mechanical engineering classes, I utilize Python and other programming languages to further develop the various projects I have worked on, writing programs to aid in optimization and simulation.
-			<br><br>
-			Some of my favorite undergraduate classes included: fluid mechanics, vibrations, numerical methods, mechanics of materials, stress & applied elasticity, and heat transfer. I have also taken a number of graduate-level electives, notably: computer-aided engineering (CAE), computational fluid dynamics (CFD), finite element methods (FEM), advanced fluid mechanics, and machine learning. As part of a rigorous Ph.D. program, I hope to continue working and researching in the area of FEA/CFD, perfectly combining my mechanical engineering and computer science interests.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="projects-section bg-light">
-    <div class="container">
-
-      <!-- Project Section Intro -->
-      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-        <div class="col-xl-8 col-lg-7">
-          <img class="img-fluid mb-3 mb-lg-0" src="img/MeWelding.jpg" alt="">
-        </div>
-        <div class="col-xl-4 col-lg-5">
-          <div class="featured-text text-center text-lg-left">
-            <h4>Projects</h4>
-            <p class="text-black-50 mb-0">I enjoy working on different projects, both for my classes and for fun. I learn most by working through problems or building something myself. In this section, I share the various mechanical, electrical, and computer science research and projects that I have worked on over the years. This includes projects for my mechanical engineering classes, Sandia National Laboratories, my computer science classes, and the Cooper Formula SAE team (that's me welding on the car!), and projects I worked on at home. I hope you enjoy looking through what I have worked on and learned from.</p>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Cause and Effect (Right) -->
-      <div class="row justify-content-center no-gutters" style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/SS340_map_disasters.gif" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">Climate Change and Severe Weather Events (Fall 2021)</h4>
-                <p class="mb-0 text-white-50">The field of <b><a href=https://en.wikipedia.org/wiki/Econometrics">econometrics</a></b> aims to use statistics as a means to finding causal relationships between things, if they exist...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="climateBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="climateModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="climateClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">The field of <b><a href="https://en.wikipedia.org/wiki/Econometrics">econometrics</a></b> aims to use statistics as a means to finding causal relationships between things, if they exist. During my first semester of senior year, I took Cooper’s “Cause and Effects” class, which covered the theory and application of econometrics. For my final project, I worked with a partner to find the relationship between climate change and severe weather events. Our data came in two parts: (1) <b><a href="https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2">FEMA data on severe weather events in the contiguous US</a></b> and (2) <b><a href="https://github.com/washingtonpost/data-2C-beyond-the-limit-usa">per county average yearly US temperature data</a></b>; the datasets were combined and narrowed to the 1953 to 2019 range. We used varous regression models, controlling for differences in location, time, and even lagged effects, to find a relationship between the rising temperature and number of severe weather events. Ultimately, we concluded that there is a statistically signficant effect of temperature on severe weather events, where there is an increase in severe weather events in response to rising temperatures (i.e. global warming), although we could confidently quantify this relationship. To perform the regression analyses, we used the <b><a href="https://www.statsmodels.org/stable/index.html#">statsmodels</a></b> Python package. I also TA’d this class, assisting senior engineering students with using Python for the purposes of this course. My code for this class project can be found on GitHub <b><a href="https://github.com/jjacobowitz/SS340_Abdelwahed/tree/main/Project">here</a></b>. My code for this class in general can be found <b><a href="https://github.com/jjacobowitz/SS340_Abdelwahed">here</a></b>.
-					  <br><br>
-					  Special thanks to Josh Y. who worked with me on this project.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: Animated choropleth of the per-year county distaster declarations in the contiguous US.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- EE Savior (Left) -->
-      <div class="row justify-content-center no-gutters"  style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/EESaviorInAction.gif" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">EE Savior (Fall 2021)</h4>
-                <p class="mb-0 text-white-50">To experience the complexities of designing a manufacturing process...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="EEBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="EEModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="EEClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">To experience the complexities of designing a manufacturing process, the final manufacturing engineering project was to design and build a device that consistently manufactured a specific product. Knowing how annoying it can be to cut, strip, and bend breadboard jumper wires (such as the ones sold <b><a href="https://www.amazon.com/MCIGICM-Breadboard-Jumper-Cables-Arduino/dp/B081GMJVPB">here</a></b>), I sought out to design a device that could do just that, in as few steps as possible. Inspired by a <b><a href="https://www.manufacturingguide.com/en/wipe-bending">wiping die</a></b> used for bending sheet metal, I came up with a method of performing all operations in one step. The wire was easily extruded at the push of a button, which activated the stepper motor containing a 3D printer extruder attachment. A 3D printed spring-loaded fixture would support the wire while it was extruded, clamp it into place, and serve as a guide for the custom-made C.B.S. (cutting, bending, and stripping) component. The C.B.S., which I machined in 3 parts on the manual mill, consisted of a handle, rails for sliding along the main fixture, two stripping & bending edges, and a cutting edge. While the C.B.S. is pressed down along the main fixture, the cutting edge cuts the wire against the feed support block. After that, the two stripping and bending edges catch a part of the insulation, cutting it off, while pushing the legs down against the fixture to bend them. After lifting the C.B.S. back up, the fixture springs open for the wire to be removed, and the process repeated. Due to manufacturing defects, the cutting mechanism did not operate properly, requiring the user to cut the wire with a wire cutter; but a future version could make use of an alternative design that is less error-prone. Click <b><a href="https://drive.google.com/drive/folders/13VK7xedV8jqnkK6Q7OyL0ajrHRkBHBJ_?usp=sharing">here</a></b> for images of the final project.<br><br>
-					  Special thanks to group members: Hannah R. (stepper motor circuit and code), Justin H. (3D printing, 3D printer extruder idea, and assembly), Kevin D. (motor mount CAD), Brandon H. (assembly), and Yongjun K. (prototype testing)</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: The EE Savior manufacturing a jumper wire.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Sandia NOMAD (Right) -->
-      <div class="row justify-content-center no-gutters" style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/EmpiricalModelofPunctureEnergyforMetalsPoster.png" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">Sandia National Laboratories NOMAD (Summer 2021)</h4>
-                <p class="mb-0 text-white-50">Seeking a more formal research experience where I could use the FEA skills, I interned during the summer of 2021 at <b><a href="https://en.wikipedia.org/wiki/Sandia_National_Laboratories">Sandia National Laboratories</a></b> (Sandia) as part of the <b><a href="https://www.sandia.gov/careers/career-possibilities/students-and-postdocs/internships-co-ops/institute-programs/nonlinear-mechanics-and-dynamics-research-institute-2/">Nonlinear Mechanics and Dynamics (NOMAD) Research Institute</a></b>...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="NOMADBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="NOMADModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="NOMADClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">Seeking a formal research experience where I could use the FEA skills, I interned during the summer of 2021 at <b><a href="https://en.wikipedia.org/wiki/Sandia_National_Laboratories">Sandia National Laboratories</a></b> (Sandia) as part of the <b><a href="https://www.sandia.gov/careers/career-possibilities/students-and-postdocs/internships-co-ops/institute-programs/nonlinear-mechanics-and-dynamics-research-institute-2/">Nonlinear Mechanics and Dynamics (NOMAD) Research Institute</a></b>. There, I was one of eighteen students in the program and one of only six undergraduate students. As part of a group of three, I worked on simulating and characterizing the puncture energy of metals to generate an empirical model that could quickly calculate the approximate puncture energy of metals to enable safety measures for personnel and product during the manufacturing and transport of sensitive nuclear military equipment. The empirical equation we were using was previously developed by a Sandia employee, and in graduate school, I will also build on previous work, advancing the current knowledge of my field of study. During this internship, I used Sandia’s in-house FEA software, <b><a href="https://www.sandia.gov/asc/advanced-simulation-and-computing/integrated-codes/">Sierra and CUBIT</a></b>, and ran the simulations on their <b><a href="https://hpc.sandia.gov/">high-performance computers</a></b>. My group and I investigated the effects of four parameters, resulting in 108 different model variations. To quickly generate the simulation files, I wrote a Python script, which drastically reduced the preprocessing my group and I needed to do. I also used Python to write a comprehensive post-processing script that used nonlinear least-squares regression to fit the simulation data with the empirical equation and created the plots for our internally published paper, which we presented to over 100 Sandia researchers. I also presented this work at the 10th <b><a href="https://www.usna.edu/NASEC/index.php">Naval Academy Science and Engineering Conference</a></b> in November 2021 after being selected as the mechanical engineering representative by The Cooper Union Chair of the Mechanical Engineering Department.
-					  <br><br>
-					  Special thanks to group members L. Alqawasmi and J. Albelo-Cortes. Special thanks to my mentor, N. Hubbard.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: My poster presented at the 10th Naval Academy Science and Engineering Conference in November 2021.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Axial Compressor (Left) -->
-      <div class="row justify-content-center no-gutters"  style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/Compressor.png" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Gas Turbofan CFD (Spring 2021)</h4>
-                <p class="mb-0 text-white-50">As the final project of our <b><a href="https://en.wikipedia.org/wiki/Computational_fluid_dynamics">computational fluid dynamics (CFD)</a></b> class, we were tasked with designing and validating (through CFD simulations) an <b><a href="https://en.wikipedia.org/wiki/Axial_compressor">axial compressor</a></b>. Before I started, I had no clue how they worked...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="axialBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="axialModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="axialClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">As the final project of our <b><a href="https://en.wikipedia.org/wiki/Computational_fluid_dynamics">computational fluid dynamics (CFD)</a></b> class, we were tasked with designing and validating (through CFD simulations) an <b><a href="https://en.wikipedia.org/wiki/Axial_compressor">axial compressor</a></b>. Before I started, I had no clue how they worked. This class was a graduate-level elective that I took at the end of my Junior because I wanted to learn about CFD solvers and how to use them. The professor for this class, liked giving projects that students did not know how to do when they started, so they could learn as much as possible along the way. My group and I started by reading papers on how axial compressors worked, and watching various videos we found online. We slowly developed extensive Excel spreadsheets that detailed our calculations for the design. We validated and adjusted our design based on the many CFD simulations we ran in <b><a href="https://www.ansys.com/products/fluids/ansys-fluent">Ansys Fluent</a></b>. In the end, we were able to write an over 40-page technical report describing the design, the calculations, and simulation results we used to validate our decisions. Overall, it was an incredible learning opportunity that gave me more confidence in approaching and tackling problems I had never seen before.
-					  <br><br>
-					  Special thanks to group members: Alex S., Brandon H., and William L.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: The 3D CAD model of the final axial compressor design.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Flash Tank Unit Solver (Right) -->
-      <div class="row justify-content-center no-gutters" style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/flash3flowchart.jpg" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">Flash Tank Unit Solver<br>(Spring 2021)</h4>
-                <p class="mb-0 text-white-50">For the final project of my numerical methods class, I had to create a Python module that implemented various numerical techniques, which would be used to solve for the state of a <b><a href="https://en.wikipedia.org/wiki/Vapor%E2%80%93liquid_separator">flash tank unit</a></b>...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="ftusBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="ftusModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="ftusClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">For the final project of my numerical methods class, I had to create a Python module that implemented various numerical techniques, which would be used to solve for the state of a <b><a href="https://en.wikipedia.org/wiki/Vapor%E2%80%93liquid_separator">flash tank unit</a></b>. Although the numerical methods class was specifically for chemical engineers (the class was formally called <i>Process Simulation and Mathematical Techniques for Chemical Engineers</i>), the topics were widely applicable. In this class, we learned about numerical error inherent in all calculations and computer simulations, how to avoid and quantify these errors, and how to use various numerical methods to: solve equations, interpolate & extrapolate data, perform numerical differentiation & integration, solve IVPs, systems of nonlinear equations (SNLEs), BVPs, & PDEs, and solve problems iteratively. The class was taught using Python, my favorite programming language, where we learned how to write our own functions for numerical computations and use the functions found in various modules, such as <b><a href="https://en.wikipedia.org/wiki/NumPy">NumPy</a></b> and <b><a href="https://en.wikipedia.org/wiki/SciPy">SciPy</a></b>. The final project was broken into 3 parts. The first part was to create functions that solved for the saturation pressure of 4 chemical species provide the error on the results; I did this by fitting each species’ data with two overlapping exponential curves (the shape was dictated by the <b><a href="https://en.wikipedia.org/wiki/Clausius%E2%80%93Clapeyron_relation">Clausius–Clapeyron relation</a></b>) that were fit by nonlinear least-squares regression. The second part was to create the functions that solved for the state of the flash tank unit given specific inputs, and we needed to use <b><a href="https://en.wikipedia.org/wiki/Root-finding_algorithms">root finding</a></b>, <b><a href="https://en.wikipedia.org/wiki/Gradient_descent#Solution_of_a_non-linear_system">gradient descent for SNLEs</a></b>, and <b><a href="https://en.wikipedia.org/wiki/Newton%27s_method#Nonlinear_systems_of_equations">Newton’s method for SNLEs</a></b>. The last part, which was optional, was to solve PDEs describing the diffusion of hydrogen for the maximum distance a sensor could be placed to detect a leak within a given time interval. I received a perfect score on this project. My code for this class can be found on GitHub <b><a href="https://github.com/jjacobowitz/CHE352_Davis">here</a></b>.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: A flowchart outlining one of the functions for part 2 of the final project.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Doppler (Left) -->
-      <div class="row justify-content-center no-gutters"  style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/RawandFFTDoppler.jpeg" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Doppler At-Home Experiment Design (Spring 2021)</h4>
-                <p class="mb-0 text-white-50">As part of my experimentation class, we needed to design our own experiment, with the added twist that it needed to be possible to do at home because of COVID...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="DopplerBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="DopplerModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="DopplerClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">As part of my experimentation class, we needed to design our own experiment, with the added twist that it needed to be possible to do at home because of COVID. With minimal supplies on hand, I decided to create an at-home experiment that demonstrated the <b><a href="https://en.wikipedia.org/wiki/Doppler_effect">Doppler effect</a></b>. The experiment involved generating a sound at a known frequency and measuring the frequency as perceived by a stationary microphone. A phone with a frequency app was used as the sound source while a small, <b><a href="https://en.wikipedia.org/wiki/Electret_microphone">electret microphone</a></b>, monitored by a <b><a href="https://www.pjrc.com/store/teensy41.html">Teensy 4.1 microcontroller</a></b>, served as the receiver. The movement of the source was controlled by placing it on a small lego cart which was attached via a fishing line to an Arduino-controlled DC motor with an encoder. The experiment consisted of recording the speed using the motor encoder and comparing the linear velocity of the phone to that which was calculated from the Doppler-shifted signal. The shift was determined using Python code that implemented the <b><a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">FFT</a></b> on the time-domain data. The results showed a recorded frequency shift that corresponded to the motor angular velocity, with a typical error of approximately 12.6%. The discrepancy was possibly due to encoder issues, but an alternative angular velocity measurement method was not available at the time.
-					  <br><br>
-					  Special thanks to Yair G. who helped me with this project.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: Raw signal (top) and FFT generated (bottom) with a 2000Hz source frequency. The 60Hz FFT peak is from the wall-power frequency.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Boat Vibration (Right) -->
-      <div class="row justify-content-center no-gutters" style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/Boat3DAnimation.gif" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">MDOF Boat Vibration<br>(Spring 2021)</h4>
-                <p class="mb-0 text-white-50">Under construction</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="boatBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="boatModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="boatClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">Under Construction.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: Under Construction.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Wind Turbine (Left) -->
-      <div class="row justify-content-center no-gutters"  style="border:1px solid black">
-        <div class="col-lg-6">
-			<img src="img/Worse_Stress.png" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Wind Turbine FEA (Fall 2020)</h4>
-                <p class="mb-0 text-white-50">For my <b><a href="https://en.wikipedia.org/wiki/Computer-aided_engineering">computer-aided engineering (CAE)</a></b> midterm project, I was tasked with designing and validating (via FEA simulations) a <b><a href="https://en.wikipedia.org/wiki/Wind_turbine">wind turbine</a></b>...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="TurbineBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="TurbineModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="TurbineClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">For my <b><a href="https://en.wikipedia.org/wiki/Computer-aided_engineering">computer-aided engineering (CAE)</a></b> midterm project, I was tasked with designing and validating (via FEA simulations) a <b><a href="https://en.wikipedia.org/wiki/Wind_turbine">wind turbine</a></b> tower and baseplate that would withstand a given set of loading conditions. Knowing this project would be time-consuming, I arranged for my group to meet right after the class to discuss our initial thoughts. We sketched out some ideas and I ended the meeting with a plan on how our group would tackle this project. Over the next month, we would meet weekly to go over hand calculations, new ideas to improve our designs, and simulation results (all performed in <b><a href="https://www.ansys.com/products/structures/ansys-mechanical">Ansys APDL and Workbench</a></b>). We slowly developed a tower design that was supported by our calculations and simulations and applied the tower reaction loads to baseplate simulations. I remember personally running over 10 different simulations in a single day to test different baseplate designs, making use of symmetries to reduce model complexity and simulation time. In the end, we wrote a comprehensive 40-page technical report detailing our design and backing it up with FEA results. Through this project, I became more familiar with the iterative FEA simulation and design process, and better understood the uses and limitations of the software.
-					  <br><br>
-					  Special thanks to group members: Alex S., Brandon H., and William L.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: Tower stress (with 2.6 FOS) when experiencing the most extreme loading conditions.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Formula SAE (Right) -->
-      <div class="row justify-content-center no-gutters" style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/2020_VD_ST_Steering Assembly_Photo.jpg" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">Formula SAE</h4>
-                <p class="mb-0 text-white-50">Freshman year I went to the Cooper <b><a href="https://en.wikipedia.org/wiki/Formula_SAE">Formula SAE</a></b> orientation meeting, where I learned...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="fsaeBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="fsaeModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="fsaeClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">Freshman year I went to the Cooper <b><a href="https://en.wikipedia.org/wiki/Formula_SAE">Formula SAE</a></b> orientation meeting, where I learned about what the team does (build an open-wheel formula-style racecar) and met some of the members; by the end, I had signed up. I have come a long way since my freshman year, now holding the elected position of Chief Engineer, charged with overseeing and verifying all design decisions and ensuring system integration and quality control for all components. Before becoming Chief Engineer, freshman year I joined the vehicle dynamics system and started learning a lot and working hard. I learned about different components, how they all fit and worked together, and helped with manufacturing, learning how to machine on the manual lathe and vertical mill and TIG weld. At the end of freshman year I took over the steering subsystem as the steering subsystem lead, charged with designing and manufacturing the steering of the car. I continued in that role through sophomore year. Being on the team has been an incredible opportunity to learn practical mechanical engineering skills. Although the in-person 2020 competition in Michigan was canceled due to COVID-19, an online competition was held where I presented the steering design to expert judges. Cooper FSAE links: <b><a href ="http://fsae.cooper.edu/3/">website</a></b>, <b><a href ="https://www.facebook.com/cooperFSAE/">Facebook</a></b>, <b><a href ="https://twitter.com/cooperunionfsae?lang=en">Twitter</a></b>, and <b><a href ="https://www.instagram.com/cooperunionfsae/?hl=en">Instagram</a></b>.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: The 3D CAD model of frame with the steering assembly and the front left suspension assembly.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-
-      <!-- S-M Chaos (Left) -->
-      <div class="row justify-content-center no-gutters"  style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/Spring_Mass_Chaos.gif" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Spring-Mass Chaos (ongoing)</h4>
-                <p class="mb-0 text-white-50">I started this research project with the chair of physics at Cooper during the summer of 2020...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="smBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="smModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="smClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">I started this research project with the chair of physics at Cooper during the summer of 2020. A <b><a href="https://en.wikipedia.org/wiki/Chaos_theory">chaotic</a></b> system is one that is said to have a sensitive dependence on initial conditions. Meaning, a chaotic system would exponentially separate from the path taken by itself for initial conditions that are very similar. The professor and I are interested in seeing if chaotic motion would arise from a small mass (to the left, in my animation) being pulled by a very large mass (on the right, in my animation). The right mass is so massive that it feels no external forces and moves at constant velocity. Meanwhile, the left mass experiences periods of zero velocity while the spring is not exerting enough force to overcome static friction, and periods of motion where the left mass is moving closer to the right mass, which results in the spring being shortened and spring force being reduced until the kinetic friction and spring force equalize. The professor and I are still working on different models to assess the chaotic qualities of this system, but we have noticed that a difference in initial separations of 1e-6 results in a noticeable difference in the mass’s position at different time intervals compared to itself without that initial separation difference. <b><a href="https://youtu.be/fgTVcF3mN3A?t=39">Here</a></b> is an animation showing the separation difference as a result of the small change in initial conditions. <b><a href="https://youtu.be/y4yQ8tDE9ic">Here</a></b> is the full video of the animation shown on this page. These animations use <b><a href="https://en.wikipedia.org/wiki/Matplotlib">Matplotlib</a></b> for graphing and my custom <b><a href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods">Runge-Kutta</a></b> 4th order method for solving the ODEs.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: The position and velocity animated plots of the two masses with a more representative model below.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Pi Approximation Using "Darts" (Left) -->
-      <div class="row justify-content-center no-gutters"  style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/PiApproximationWhiteBackground.png" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">Pi Approximation Using "Darts"<br>(Summer 2020)</h4>
-                <p class="mb-0 text-white-50">Once again, a YouTube video was my inspiration for a project...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="piBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="piModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="piClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">Once again, a YouTube video was my inspiration for a project. I first heard about this method of calculating Pi from <b><a href="https://www.youtube.com/watch?v=M34TO71SKGk">this</a></b> video. Given a circle inscribed in a square, if darts are randomly thrown at this "board", most will land in the circle, and some will land in the small region that the circle does not cover. Given the area of the circle is pi * radius^2, and the area of the square (whose side length would be 2 * radius if a circle is inscribed within it)is 4 * radius^2, the probability of a dart landing within the circle is pi * radius^2 / 4 * radius^2 = pi/4. Multiplying by 4, we can find the approximate value of Pi. With only a few darts thrown, the approximation for Pi would not be very close to the actual value. But after many darts are thrown, the value will get closer and closer. The code for this can be found on my GitHub <b><a href="https://github.com/jjacobowitz/PiApproximation">here</a></b>.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: The code output comparing the calculated value of Pi to the actual value (rounded to 16 decimal places).</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Chaos Game (Right) -->
-      <div class="row justify-content-center no-gutters"  style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/ChaosGameReducedandSpedUp.gif" alt="" style="max-width: 100%">
-        </div>
-		<div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Chaos Game (Summer 2020)</h4>
-                <p class="mb-0 text-white-50">I originally saw a <b><a href="https://youtu.be/kbKtFN71Lfs">Numberphile</a></b> video about the <b><a href="https://en.wikipedia.org/wiki/Chaos_game">Chaos Game</a></b> on YouTube...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="chaosBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="chaosModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="chaosClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">I originally saw a <b><a href="https://youtu.be/kbKtFN71Lfs">Numberphile</a></b> video about the <b><a href="https://en.wikipedia.org/wiki/Chaos_game">Chaos Game</a></b> on YouTube. Rules: given a starting point, a vertex is randomly selected, and the new point is half the distance between the current point and the vertex. When starting with 3 vertices, a <b><a href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle">Sierpiński triangle</a></b> emerges. I wrote the code for this in Python and used Matplotlib to create the visuals. Animating and exporting the plot as a gif proved to be challenging, but I learned a lot for future animated projects. My code for this project can be found <b><a href="https://github.com/jjacobowitz/ChaosGame">here</a></b>.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: The animated output of the chaos game showing the Sierpiński triangle developing.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Eigenproblem (left) -->
-      <div class="row justify-content-center no-gutters"  style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/EigenproblemPhasePortrait.png" alt="" style="max-width: 100%">
-        </div>
-		<div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">Eigenproblem<br>(Summer 2020)</h4>
-                <p class="mb-0 text-white-50">After learning in my "Systems Dynamics" class about the response of a system using differential equations, we extended this to more dimensions...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="eigenBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="eigenModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="eigenClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">After learning in my "Systems Dynamics" class about the response of a system using differential equations, we extended this to more dimensions. The natural language of performing these calculations is linear algebra. To find the behavior of the system, we solved for the <b><a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors">eigenvalues and eigenvectors</a></b>. To better visualize this, I created this plot. Shown here is the phase portrait showing the system response to some initial conditions. I wrote <b><a href="https://drive.google.com/open?id=18-BsFYriYZPJ-sc3_Y66BBpB_YV0_x3A">this</a></b> LaTeX document to explain math behind the eigenproblem, working through the example shown. The code for this can be found on my GitHub <b><a href="https://github.com/jjacobowitz/EigenvaluesandEigenvectos">here</a></b>.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: A plot showing the phase portrait with the system response to some initial conditions.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Garden (Left) -->
-      <div class="row justify-content-center no-gutters" style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/RecentGardenPhoto1.jpg" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Garden for my Mom<br>(Summer 2020)</h4>
-                <p class="mb-0 text-white-50">My mother loves gardening, but the animals were becoming too much...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="grdnBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="grdnModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="grdnClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">My mother loves gardening, but the animals were becoming too much. Where I live, we have: squirrels, chipmunks, rabbits, mice, raccoons, skunks, deer, foxes, and groundhogs. All these animals enjoy my mother’s vegetables as much as she does. So, during the summer of 2020 she asked for a fenced-in garden. I drew up some plans (see a photo of them <b><a href="https://drive.google.com/file/d/1s5vVlr4jvMBybIbBk8BTmBHu5Hv2pnKE/view?usp=sharing">here</a></b>) and bought all the materials with my father. Over the course of 5 days, my father and I built the garden. The garden has four 2"x8" planks that skirt the perimeter, making the 6'x10' base. There are seven 2"x4"x6' pieces that make up the vertical posts, all of which are dug half a foot into the ground. Connecting all the vertical supports are 1"x2"s. On the bottom we lay down ¼" hardware cloth (steel fencing that has ¼" holes) to keep animals from burrowing underneath. We then put down a tarp to prevent weeds and filled the garden with about 30 cubic feet of organic garden soil. Around the perimeter we stapled more ¼" hardware cloth to prevent animals from getting in. The perimeter fence extends 6' high to prevent deer from reaching over and feasting. The door is easily attached and removed with eye hooks and is also covered in 1/4" hardware cloth. So far the garden has kept out all animals, leaving the plants to grow freely. For photos of the garden throughout the process, follow <b><a href="https://drive.google.com/drive/folders/1ag74wSXPwJwtQMppAqDI7BzOLjBzVhN5?usp=sharing">this</a></b> link to a Google Drive folder.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: The completed garden being used.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- CVT (Right) -->
-      <div class="row justify-content-center no-gutters" style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/CVTRunning.gif" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">Continuous Variable Transmission (Fall 2019)</h4>
-                <p class="mb-0 text-white-50">Tasked with designing a small and easily adjustable transmission for my "Cloud-Based Design and Manufacturing" class, my team and I...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="cvtBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="cvtModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="cvtClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">Tasked with designing a small and easily adjustable transmission for my "Cloud-Based Design and Manufacturing" class, my team and I made a <b><a href="https://en.wikipedia.org/wiki/Continuously_variable_transmission#Toroidal_or_roller-based_(Extroid)">toroidal CVT</a></b>. It was made from 3D printed, laser-cut acrylic, CNC’d, and a few purchased parts. The CVT works with 3 different motors using custom motor-mounts. My team and I worked together using <b><a href="https://en.wikipedia.org/wiki/Onshape">Onshape</a></b> CAD software. The professor said every other group's transmission eventually failed, but ours ran for over an hour before he stopped it. Pictures and some failed tests can be found <b><a href="https://drive.google.com/open?id=1nUAFT8Wc2R4QqrLg0eJn9B2ebOWrDnIv">here</a></b>.
-					  <br><br>
-					  Special thanks to group members: Dean C., Connor L., Flora S., and Eric W.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: A test run of the fully-built CVT. The side cover was removed to see the inner workings.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-	  <!-- Patience Egg (Left) -->
-      <div class="row justify-content-center no-gutters" style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/PuzzleEgg.jpg" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Patience Egg (Spring 2019)</h4>
-                <p class="mb-0 text-white-50">This puzzle egg is designed to reward those who are patient...</p>
-                <p> </p>
-                  <!-- Trigger/Open The Modal -->
-                  <button id="eggBtn" class="btn btn-primary">Read more</button>
-                  <!-- The Modal -->
-                  <div id="eggModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span id="eggClose" class="close">&times;</span>
-                      <p class="mb-0 text-white-50">This puzzle egg is designed to reward those who are patient. Using an <b><a href="https://www.adafruit.com/product/2809">accelerometer</a></b>, the <b><a href="https://www.arduino.cc/en/pmwiki.php?n=Main/ArduinoBoardNano">Arduino Nano</a></b> keeps track of the time since it was moved last. After the specified time has elapsed, the <b><a href="https://www.adafruit.com/product/169">servo</a></b> motor is triggered, allowing the egg to be opened. The shell was designed in SolidWorks and simple models of the components were made and “test fit” to validate the size. To avoid false readings, the xyz accelerations are averaged, and three successive readings above the movement threshold are needed to reset the timer. More photos of this project can be found <b><a href="https://drive.google.com/open?id=1NFVUlzr-LKPWqc4V0paeqsQUuHEnLaVh">here</a></b> and GitHub <b><a href="https://github.com/jjacobowitz/PatienceEgg">here</a></b>.
-					  <br><br>
-					  Special thanks to group members: Caitlin R., Eunkyu K., and Seyun K.</p>
-                    </div>
-                  </div>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-				<br>
-				<p class="mb-0 text-white-50">Shown: A view inside the egg where the electronics are stored. The accelerometer, Arduino Nano, servo motor, and battery clip can be seen.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-
-
-      <!-- Intermediate Axis Theorem (Left) -->
-      <!-- <div class="row justify-content-center no-gutters"  style="border:1px solid black">
-        <div class="col-lg-6">
-          <img src="img/RotationAbout3PrincipleAxes.png" alt="" style="max-width: 100%">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Intermediate Axis Theorem</h4>
-                <p class="mb-0 text-white-50">Add blurb.</p>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-  </section>
-
-
-  <!-- Resume+ Section -->
-  <section id="resume" class="signup-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-lg-8 mx-auto text-center">
-
-
-          <h2 class="text-white mb-5">Resume+</h2>
-          <p class="text-white mb-5">Please use the links below for my resume/CV + more.</p>
-
-            <!-- &nbsp -->
-			<!-- Trigger/Open The Modal -->
-			<button id="resumeBtn" class="btn btn-primary">Resume and CV</button>
-			<!-- The Modal -->
-			<div id="resumeModal" class="modal">
-				<!-- Modal content -->
-				<div class="modal-content">
-					<span id="resumeClose" class="close">&times;</span>
-					<p class="mb-0 text-white-50">Resume or CV available upon request. Email: jared.jacobowitz(at)gmail(dot)com</p>
+	<!-- About Me Section -->
+	<section id="about" class="about-section text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<h2 class="text-white mb-4">About Me</h2>
+					<!-- Optionally add headshot here -->
+					<!-- <img src="image link" class="img-fluid" alt="Avatar" style="border-radius: 50%; max-width: 33%"> -->
+					<p style="color:rgba(255,255,255,0.75)"><br>I am a focused, detail-oriented, and organized senior mechanical engineering (major) and computer science (minor) student at <b><a href="https://cooper.edu/">The Cooper Union for the Advancement of Science and Art</a></b> (expected: May 2022) in New York City.
+					<br><br>
+					I am interested in computational mechanical engineering research, specifically fluid mechanics with the use of numerical methods, simulations, and data science. I spent the summer of 2021 as an undergraduate R&D intern at <b><a href="https://en.wikipedia.org/wiki/Sandia_National_Laboratories">Sandia National Laboratories</a></b> in the <b><a href="https://www.sandia.gov/careers/career-possibilities/students-and-postdocs/internships-co-ops/institute-programs/nonlinear-mechanics-and-dynamics-research-institute-2/">Nonlinear Mechanics and Dynamics (NOMAD) Research Institute</a></b>. There, I was one of eighteen students in the program and one of only six undergraduate students. I worked on FEA simulations (using Sierra/SM on Sandia’s HPC servers) of a material puncture scenario and then fit the data in Python using nonlinear least-squares regression with a previously developed empirical puncture energy equation. As I did during my internship and also do in many of my mechanical engineering classes, I utilize Python and other programming languages to further develop the various projects I have worked on, writing programs to aid in optimization and simulation.
+					<br><br>
+					Some of my favorite undergraduate classes included: fluid mechanics, vibrations, numerical methods, mechanics of materials, stress & applied elasticity, and heat transfer. I have also taken a number of graduate-level electives, notably: computer-aided engineering (CAE), computational fluid dynamics (CFD), finite element methods (FEM), advanced fluid mechanics, and machine learning. As part of a rigorous Ph.D. program, I hope to continue working and researching in the area of FEA/CFD, perfectly combining my mechanical engineering and computer science interests.
+					</p>
 				</div>
 			</div>
-            <p></p>
-            <a href="https://www.linkedin.com/in/jared-jacobowitz" class="btn btn-primary js-scroll-trigger">LinkedIn</a>
-            <!-- &nbsp -->
-            <p></p>
-            <a href="https://github.com/jjacobowitz" class="btn btn-primary js-scroll-trigger">GitHub</a>
+		</div>
+	</section>
+	
+	<!-- Research Section -->
+	<section id="research" class="projects-section bg-gray">
+		<div class="container">
+		
+			<!-- Research Section Intro -->
+			<div class="row text-center">
+				<div class="col-lg-8 mx-auto">
+					<h2 class="text-white mb-4">Research</h2>
+					<p style="color:rgba(255,255,255,0.75)">
+					This section shares some of the research projects I have worked on. I enjoy research because it requires self-discipline and perseverance to work on open-ended problems. I also enjoy how challenging it can be, which makes the discovery that much more rewarding. I find that research problems are one of the best ways to learn, because they often require applying many areas of knowledge, reinforcing my skills and understanding of the topics/concepts. I hope to continue working on more research problems in graduate school.
+					</p>
+					<br><br>
+				</div>
+			</div>
+			
+			<script>
+				$(document).ready(function(){
+					$.getJSON('data.json', function(data) {
+						$.each(data.research, function(i, _research) {
+							var clone = $(".researchtemplate").clone();
+							clone.find(".template-id").attr("id", _research.id);
+							clone.find(".template-title").html(_research.title);
+							clone.find(".template-date").html(_research.date);
+							clone.find(".template-partners").html(_research.partners);
+							if(_research.course != 0)
+								clone.find(".template-course").html(_research.course).before("<br>");
+							else
+								clone.find(".template-course").html("");
+							clone.find(".template-short").html(_research.short);
+							clone.find(".template-long").html(_research.long);
+							clone.find(".template-smallimage").attr("value", _research.id);
+							clone.find(".template-smallimage").attr("src", _research.image);
+							clone.find(".template-largeimage").attr("src", _research.image);
+							clone.find(".template-imagedescription").html(_research.image_description);
+							clone.find(".template-button").attr("value", _research.id);
+							
+							clone.removeClass("researchtemplate");
 
-        </div>
-      </div>
-    </div>
-  </section>
+							$(".researchtemplate-spot").append(clone);
+						});
+					});
+				});			
+			</script>
+			
+			<!-- RESEARCH TEMPLATE -->
+			<div class="researchtemplate-spot">
+				<div class="researchtemplate">
+					<div class="row justify-content-center no-gutters bg-light template-id" style="border:1px solid black" id="ID">
+						<div class="bg-black text-justify-center w-100 project">
+							<div class="d-flex w-100">
+								<div class="project-text w-100 my-auto text-center">
+									<h4 class="text-white template-title">TITLE</h4>
+									<p style="color:rgba(255,255,255,0.75)">
+										<br>
+										<label class="template-date">DATE</label>
+										<label class="template-course">COURSE</label>
+										<br>
+										<label class="template-partners">PARTNERS</label>
+										<br>
+										<span class="dots">
+											<label class="template-short">SHORT DESCRIPTION</label>
+										</span>
+										<span class="more">
+											<label class="template-long">LONG DESCRIPTION</label>
+										</span>
+										<br><br>
+										<span class="dots">
+											<input class="template-smallimage" type="image" value="ID" onclick="readMore(this.value)" src="" style="max-width: 30%">
+										</span>
+										<span class="more">
+											<img class="template-largeimage" src="" style="max-width: 90%">
+										</span>
+										<br><br>
+										<label class="template-imagedescription">Image Description</label>
+									</p>
+									<br>
+									<button value="id" onclick="readMore(this.value)" class="btn btn-primary template-button">Learn More</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+				<br>
+			</div>
+			
+		</div>
 
-  <!-- Footer -->
-  <footer class="bg-black small text-center text-white-50">
-  </footer>
-  <footer class="bg-black small text-center text-white-50">
-    <div class="container">
-      Copyright &copy; <a href="License.txt">MIT</a>
-    </div>
-  </footer>
+	<!-- Projects Section -->
+	<section id="projects" class="projects-section bg-gray">
+		<div class="container">
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+			<!-- Project Section Intro -->
+			<div class="row align-items-center no-gutters mb-4 mb-lg-5">
+				<div class="col-xl-8 col-lg-7">
+					<img class="img-fluid mb-3 mb-lg-0" src="img/MeWelding.jpg" alt="">
+				</div>
+				<div class="col-xl-4 col-lg-5">
+					<div class="featured-text text-center text-lg-left text-white">
+						<h4>Projects</h4>
+						<p style="color:rgba(255,255,255,0.75)">I enjoy working on different projects; I learn most by working through problems or building something myself. In this section, I share the various mechanical, electrical, and computer science projects that I have worked on over the years. This includes projects for my mechanical engineering classes, my computer science classes, the Cooper Formula SAE team (that's me welding on the car!), and projects I worked on at home. I hope you enjoy looking through what I have worked on and learned from.
+						</p>
+					</div>
+				</div>
+			</div>
+		
+			<script>
+				$(document).ready(function(){
+					$.getJSON('data.json', function(data) {
+						$.each(data.projects, function(i, project) {
+							var clone = $(".projecttemplate").clone();
+							clone.find(".template-id").attr("id", project.id);
+							clone.find(".template-title").html(project.title);
+							clone.find(".template-date").html(project.date);
+							if(project.course != 0)
+								clone.find(".template-course").html(project.course).before("<br>");
+							else
+								clone.find(".template-course").html("");
+							clone.find(".template-partners").html(project.partners);
+							clone.find(".template-short").html(project.short);
+							clone.find(".template-long").html(project.long);
+							clone.find(".template-smallimage").attr("value", project.id);
+							clone.find(".template-smallimage").attr("src", project.image);
+							clone.find(".template-largeimage").attr("src", project.image);
+							clone.find(".template-imagedescription").html(project.image_description);
+							clone.find(".template-button").attr("value", project.id);
+							
+							clone.removeClass("projecttemplate");
 
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+							$(".projecttemplate-spot").append(clone);
+						});
+					});
+				});			
+			</script>
+			
+			<!-- PROJECT TEMPLATE -->
+			<div class="projecttemplate-spot">
+				<div class="projecttemplate">
+					<div class="row justify-content-center no-gutters bg-light template-id" style="border:1px solid black" id="ID">
+						<div class="bg-black text-justify-center w-100 project">
+							<div class="d-flex w-100">
+								<div class="project-text w-100 my-auto text-center">
+									<h4 class="text-white template-title">TITLE</h4>
+									<p style="color:rgba(255,255,255,0.75)">
+										<br>
+										<label class="template-date">DATE</label>
+										<label class="template-course">COURSE</label>
+										<br>
+										<label class="template-partners">PARTNERS</label>
+										<br>
+										<span class="dots">
+											<label class="template-short">SHORT DESCRIPTION</label>
+										</span>
+										<span class="more">
+											<label class="template-long">LONG DESCRIPTION</label>
+										</span>
+										<br><br>
+										<span class="dots">
+											<input class="template-smallimage" type="image" value="ID" onclick="readMore(this.value)" src="" style="max-width: 30%">
+										</span>
+										<span class="more">
+											<img class="template-largeimage" src="" style="max-width: 90%">
+										</span>
+										<br><br>
+										<label class="template-imagedescription">Image Description</label>
+									</p>
+									<br>
+									<button value="id" onclick="readMore(this.value)" class="btn btn-primary template-button">Learn More</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+				<br>
+			</div>
+			
+			
+		</div>
+		
+	</section>
 
-  <!-- Custom scripts for this template -->
-  <script src="js/grayscale.min.js"></script>
 
+	<!-- Resume+ Section -->
+	<section id="resume" class="signup-section bg-gray">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-lg-8 mx-auto text-center">
+					<h2 class="text-white mb-5">Resume+</h2>
+					<p class="text-white mb-5">Please use the links below for my resume/CV + more.</p>
+					<!-- &nbsp -->
+					<!-- Trigger/Open The Modal -->
+					<button id="resumeBtn" class="btn btn-primary">Resume and CV</button>
+					<!-- The Modal -->
+					<div id="resumeModal" class="modal">
+						<!-- Modal content -->
+						<div class="modal-content">
+							<span id="resumeClose" class="close">&times;</span>
+							<p class="mb-0 text-white-50">Resume or CV available upon request. Email: jared.jacobowitz(at)gmail(dot)com</p>
+						</div>
+					</div>
+					<p></p>
+					<a href="https://www.linkedin.com/in/jared-jacobowitz" class="btn btn-primary js-scroll-trigger">LinkedIn</a>
+					<!-- &nbsp -->
+					<p></p>
+					<a href="https://github.com/jjacobowitz" class="btn btn-primary js-scroll-trigger">GitHub</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="bg-gray small text-center text-white-50"></footer>
+	<footer class="bg-gray small text-center text-white-50">
+		<div class="container">
+			Copyright &copy; <a href="License.txt">MIT</a>
+		</div>
+	</footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="js/grayscale.min.js"></script>
 </body>
 
 </html>
