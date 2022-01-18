@@ -106,9 +106,9 @@
 			"course": "Course: Vibrations",
 			"partners": "Partner: Yair G.",
 			"image": "img/MDOFBoatMATLAB.gif",
-			"short": "Under Construction.",
-			"long": "Under Construction.",
-			"image_description": "Shown: Under Construction."
+			"short": "As a final project in my vibrations class, we were tasked with analyzing a real-world vibrating system with the tools and methods we had learned in class. My partner and I decided to model a 3 degree-of-freedom (DOF) boat on water.",
+			"long": "As a final project in my vibrations class, we were tasked with analyzing a real-world vibrating system with the tools and methods we had learned in class. My partner and I decided to model a 3 degree-of-freedom (DOF) boat on water. The 3 DOFs we focused on were <b><a href='https://en.wikipedia.org/wiki/Ship_motions'>heave, roll, and pitch</a></b>. We only considered small rotations, allowing for a small angle approximation to be made, and uncoupling the DOFs. Because roll and pitch were both rotational DOFs within the same plane, only one equation needed to be derived and then applied separately for each rotation, with the rotations only different in the geometry of that perspective. In class, we learned to use the <b><a href='https://en.wikipedia.org/wiki/Laplace_transform'>Laplace</a></b> (frequency) domain to analyze vibration systems because it reduces derivatives to linear functions. Using <b><a href='https://www.mathworks.com/products/matlab.html'>MATLAB</a></b>, my partner and I were able to simulate the motion of a boat in response to an imaginary plane of water. We presented our results to our class at the end of the semester.",
+			"image_description": "The boat responding to the motion of a planar wave, causing forced vibrations. The animation was created in MATLAB."
 		},
 		{
 			"id": "turbinefea",
